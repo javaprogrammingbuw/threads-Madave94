@@ -1,5 +1,14 @@
-# Ignore Gradle project-specific cache directory
-.gradle
-
-# Ignore Gradle build output directory
+*
+#Whitelist
+!*/
+!*java
+!.gitignore
+!.travis.yml
+!build.gradle
+!gradle*
+!/gradle/wrapper
+!*.pdf
+#Blacklisted again
+bin
 build
+/.gradle/
