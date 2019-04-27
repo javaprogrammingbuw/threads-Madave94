@@ -12,15 +12,27 @@ public class BankAccount {
 		this.limit = limit;
 	}
 	
-	public void transfer() {
+	public void transfer(BankAccount addressee, double amount) {
 		// TODO
 	}
-	
-	public void withdraw() {
+		
+	public void withdraw(double amount) {
 		// TODO
 	}
 
-	public void deposit() {
+	public void deposit(double amount) {
 		// TODO
+	}
+	
+	public double getBalance() {
+		return balance;
+	}
+	
+	public double getLimit() {
+		return limit;
+	}
+	
+	public String getIBAN() {
+		return IBAN;
 	}
 }
