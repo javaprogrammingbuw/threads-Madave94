@@ -33,7 +33,7 @@ public class Task2Test {
 	}
 	
 	@Test
-	public void testBankingSituation() {
+	public void testBankingSituation() throws InterruptedException {
 		BankAccount a = new BankAccount ("DE52 1200 3000 4000 5000", 300, 50);
 		BankAccount b = new BankAccount ("FR74 9800 7000 6000 0005", 300, 50);
 		BankAccount c = new BankAccount ("GB31 4000 3200 5400 7198", 300, 50);
@@ -43,6 +43,8 @@ public class Task2Test {
 		employeeX.start();
 		employeeY.start();
 		employeeZ.start();
+		// Wait before checking assertions
+		Thread.sleep(100);
 		assertEquals(300, a.getBalance(), DELTA);
 		assertEquals(300, b.getBalance(), DELTA);
 		assertEquals(300, c.getBalance(), DELTA);

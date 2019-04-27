@@ -34,9 +34,9 @@ public class BankAccount {
 	private void changeBalance(double amount, boolean isAddition) {
 		lock.lock();
 		if (isAddition) {
-			balance += amount;
+			balance = balance + amount;
 		} else {
-			balance -= amount;
+			balance = balance - amount;
 		}
 		lock.unlock();
 	}
