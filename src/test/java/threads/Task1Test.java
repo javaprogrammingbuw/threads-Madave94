@@ -39,5 +39,13 @@ public class Task1Test {
 		int result = new Task1().quickSum(arr);
 		assertEquals(1835929684, result);
 	}
+	
+	@Test
+	public void testPartArray() {
+		int[] arr = {1,5,10,7,8,4,12,9,5,6};
+		int[] result = new SimpleSumThread(arr, 0, arr.length-1).partArray();
+		int[] expected = arr;
+		assertArrayEquals(expected, result);		
+	}
 
 }
