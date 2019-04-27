@@ -1,10 +1,13 @@
 package threads.task2;
 
+import java.util.concurrent.locks.*;
+
 public class BankAccount {
 	
 	private String IBAN;
 	private double balance;
 	private double limit;
+	final Lock lock = new ReentrantLock();
 	
 	public BankAccount(String IBAN, double balance, double limit) {
 		this.IBAN = IBAN;
@@ -20,12 +23,22 @@ public class BankAccount {
 	public void withdraw(double amount) {
 		if (amount <= limit) 
 		{
-			balance -= amount;
+			changeBalance(amount, false);
 		}
 	}
-
+	
 	public void deposit(double amount) {
-		balance += amount;
+		changeBalance(amount, true);
+	}
+	
+	private void changeBalance(double amount, boolean isAddition) {
+		lock.lock();
+		if (isAddition) {
+			balance += amount;
+		} else {
+			balance -= amount;
+		}
+		lock.unlock();
 	}
 	
 	public double getBalance() {
