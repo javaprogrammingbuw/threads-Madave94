@@ -31,14 +31,12 @@ public class BankAccount {
 		changeBalance(amount, true);
 	}
 	
-	private void changeBalance(double amount, boolean isAddition) {
-		lock.lock();
+	synchronized private void changeBalance(double amount, boolean isAddition) {
 		if (isAddition) {
-			balance = balance + amount;
+			balance += amount;
 		} else {
-			balance = balance - amount;
+			balance -= amount;
 		}
-		lock.unlock();
 	}
 	
 	public double getBalance() {
