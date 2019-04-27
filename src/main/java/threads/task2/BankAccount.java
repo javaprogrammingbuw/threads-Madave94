@@ -13,15 +13,19 @@ public class BankAccount {
 	}
 	
 	public void transfer(BankAccount addressee, double amount) {
-		// TODO
+		this.withdraw(amount);
+		addressee.deposit(amount);
 	}
 		
 	public void withdraw(double amount) {
-		// TODO
+		if (amount <= limit) 
+		{
+			balance -= amount;
+		}
 	}
 
 	public void deposit(double amount) {
-		// TODO
+		balance += amount;
 	}
 	
 	public double getBalance() {
