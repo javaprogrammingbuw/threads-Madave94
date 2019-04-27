@@ -1,6 +1,10 @@
-package threads;
+package threads.task1;
 
 import org.junit.Test;
+
+import threads.task1.SimpleSumThread;
+import threads.task1.Task1;
+
 import static org.junit.Assert.*;
 
 public class Task1Test {
@@ -41,11 +45,33 @@ public class Task1Test {
 	}
 	
 	@Test
-	public void testPartArray() {
+	public void testPartArray1() {
 		int[] arr = {1,5,10,7,8,4,12,9,5,6};
 		int[] result = new SimpleSumThread(arr, 0, arr.length-1).partArray();
 		int[] expected = arr;
 		assertArrayEquals(expected, result);		
+	}
+	
+	@Test
+	public void testPartArray2() {
+		int[] arr = {1,5,10,7,8,4,12,9,5,6};
+		int[] result = new SimpleSumThread(arr, 0, 4).partArray();
+		int[] expected = {1,5,10,7,8};
+		assertArrayEquals(expected, result);		
+	}
+	@Test
+	public void testPartArray3() {
+		int[] arr = {1,5,10,7,8,4,12,9,5,6};
+		int[] result = new SimpleSumThread(arr, 5, 9).partArray();
+		int[] expected = {4,12,9,5,6};
+		assertArrayEquals(expected, result);		
+	}
+	
+	@Test
+	public void testSumArray() {
+		int[] arr = {1,5,10,7,8,4,12,9,5,6};
+		int result = new SimpleSumThread(arr, 0, arr.length-1).sumArray();
+		assertEquals(67, result);		
 	}
 
 }

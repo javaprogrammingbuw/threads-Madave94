@@ -1,17 +1,17 @@
-package threads;
+package threads.task1;
 
 public class Task1 extends Thread{
 	
-	volatile int sum;
+	int sum;
 	
 	public int quickSum(int[] arr) {
 		this.sum = 0;
 		
 		int length = arr.length;
 		
-		Thread t1 = new Thread(new SimpleSumThread(arr, 0, length/2-1));
+		Thread t1 = new Thread(new SimpleSumThread(this, arr, 0, length/2));
+		Thread t2 = new Thread(new SimpleSumThread(this, arr, length/2+1, length-1));
 		t1.start();
-		Thread t2 = new Thread(new SimpleSumThread(arr, length/2, length-1));
 		t2.start();
 		
 		try {
@@ -24,7 +24,8 @@ public class Task1 extends Thread{
 		return sum;
 	}
 	
-	public void addToSum(int partSum) {
+	synchronized public void addToSum(int partSum) {
+		System.out.println("[" + partSum + "] added to [" + sum + "]");
 		sum += partSum;
 	}
 }
