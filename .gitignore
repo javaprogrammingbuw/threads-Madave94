@@ -8,6 +8,7 @@
 !gradle*
 !/gradle/wrapper
 !*.pdf
+!pom.xml
 #Blacklisted again
 bin
 build
